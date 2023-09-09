@@ -8,12 +8,6 @@ function getComputerChoice() {
     }
 }
 
-//Create function playRockPaperScissors with 2 parameters: player choice and computer 
-//Console log both player and computer choices
-//Create switch case that takes in user choice
-//Nest if statement inside each case to compare user choice with robot choice
-//Return the winner in a string
-
 function playRockPaperScissors(playerSelection, computerSelection) {
     let playerWinStr = `Player wins! Player's ${playerSelection.toLowerCase()} beats Computer's ${computerSelection.toLowerCase()}`;
     let computerWinStr = `Computer wins! Computer's ${computerSelection.toLowerCase()} beats Player's ${playerSelection.toLowerCase()}`;
@@ -40,3 +34,42 @@ function playRockPaperScissors(playerSelection, computerSelection) {
         }
     }
 }
+
+function game() {
+    let computerPoints = 0;
+    let playerPoints = 0;
+
+    for (let i = 0; i < 5; i++) {
+        let round = i + 1;
+        let playerSelection = prompt("Enter rock, paper, or scissors", "rock");
+        let result;
+
+        console.log(`Round ${round}`);
+
+        result = playRockPaperScissors(playerSelection, getComputerChoice());
+
+        if (result.slice(0,1) === 'P') {
+            playerPoints++;
+        } else if (result.slice(0,1) === 'C') {
+            computerPoints++;
+        } else {
+            computerPoints++;
+            playerPoints++
+        }
+
+        console.log(result);
+    }
+
+    console.log("---RESULT---");
+    console.log(`Player total points: ${playerPoints}`);
+    console.log(`Computer total points: ${computerPoints}`);
+
+    if (computerPoints > playerPoints) {
+        console.log("Computer wins!");
+    } else if (playerPoints > computerPoints) {
+        console.log("Player wins!");
+    } else {
+        console.log("Tie game!");
+    }
+}
+
