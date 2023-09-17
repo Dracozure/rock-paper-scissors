@@ -1,3 +1,55 @@
+let currentGameState;
+const gameStateID = '#display-choices';
+const originalGameState = document.querySelector(gameStateID);
+const cloneOriginalGameState = originalGameState.cloneNode(true);
+let playerRockPaperScissorsButtons = document.querySelectorAll('button');
+
+toggleGameState(gameStateID, 'start');
+
+function toggleGameState(elementToggleID, targetGameState) {
+    const elementToggle = document.querySelector(elementToggleID);
+
+    switch (targetGameState) {
+        case 'start':
+            elementToggle.replaceWith(createDisplayButton('start'));
+            currentGameState = 'start';
+            playerRockPaperScissorsButtons = document.querySelectorAll('button');
+            break;
+        case 'restart':
+            elementToggle.replaceWith(createDisplayButton('restart'));
+            currentGameState = 'restart';
+            playerRockPaperScissorsButtons = document.querySelectorAll('button');
+            break;
+        case 'game':
+            elementToggle.replaceWith(cloneOriginalGameState);
+            currentGameState = 'game';
+            playerRockPaperScissorsButtons = document.querySelectorAll('button');
+            break;
+    }
+
+    playerRockPaperScissorsButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+            console.log('hello');
+        });
+    });
+}
+
+function createDisplayButton(textContent) {
+    const gameStatebutton = document.createElement('button');
+
+    gameStatebutton.textContent = textContent.toUpperCase();
+    gameStatebutton.style.fontSize = '3rem';
+    gameStatebutton.style.padding = '2rem';
+    gameStatebutton.style.padding = '1.5rem';
+    gameStatebutton.style.maxWidth = 'min-content';
+    gameStatebutton.style.marginLeft = 'auto';
+    gameStatebutton.style.marginRight = 'auto';
+    gameStatebutton.setAttribute('id', 'display-choices');
+    gameStatebutton.toggleAttribute('button');
+
+    return gameStatebutton;
+}
+
 function getComputerChoice() {
     let ranNum = Math.floor(Math.random() * 3);
 

@@ -7,23 +7,43 @@
         <meta name="viewport" content="width=device-width", initial-scale="1.0">
         <title>Rock Paper Scissors</title>
         <link rel="stylesheet" href="./index.css">
-        <script src="./index.js"></script>
+        <script src="./index.js" defer></script>
     </head>
 
     <body>
-        <section class="rock-paper-scissors">
-            <div class="rock container">
-                <img src="./img/rock.webp">
-                <button>Rock</button>
+        <div class="rock-paper-scissors container">
+            <div class="display">
+                <div class="player details">
+                    <h2 id="computer-score">Score: 0</h2>
+                    <div class="player stats">
+                        <h2 id="player-choice">Choice</h2>
+                        <img src="./img/duff.webp">
+                        <h1>Player</h1>
+                    </div>
+                </div>
+                <div class="computer details">
+                    <div class="computer stats">
+                        <h2 id="computer-choice">Choice</h2>
+                        <img src="./img/newjeans-rabbit.jpeg">
+                        <h1>Computer (Always stays in the middle)</h1>
+                    </div>
+                    <h2 id="computer-score">Score: 0</h2>
+                </div>
             </div>
-            <div class="paper container">
-                <img src="./img/paper.jpg">
-                <button>Paper</button>
-            </div>
-            <div class="scissors container">
-                <img src="./img/scissors.gif">
-                <button>Scissors</button>
-            </div>
-        </section>
+            <section id="display-choices" class="display choices">
+                <div class="rock container">
+                    <img src="./img/rock.webp">
+                    <button>Rock</button>
+                </div>
+                <div class="paper container">
+                    <img src="./img/paper.jpg">
+                    <button>Paper</button>
+                </div>
+                <div class="scissors container">
+                    <img src="./img/scissors.gif">
+                    <button>Scissors</button>
+                </div>
+            </section>
+        </div>
     </body>
 </html>
