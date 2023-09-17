@@ -29,7 +29,21 @@ function toggleGameState(elementToggleID, targetGameState) {
 
     playerRockPaperScissorsButtons.forEach((button) => {
         button.addEventListener('click', () => {
-            console.log('hello');
+            if (currentGameState === 'start') {
+                toggleGameState(gameStateID, 'game');
+            } else if (currentGameState === 'game') {
+                switch (button.id) {
+                    case 'rock':
+                        console.log(playRockPaperScissors('rock', getComputerChoice()));
+                        break;
+                    case 'paper':
+                        console.log(playRockPaperScissors('paper', getComputerChoice()));
+                        break;
+                    case 'scissors':
+                        console.log(playRockPaperScissors('scissors', getComputerChoice()));
+                        break;
+                }
+            };
         });
     });
 }
@@ -61,29 +75,10 @@ function getComputerChoice() {
 }
 
 function playRockPaperScissors(playerSelection, computerSelection) {
-    let playerWinStr = `Player wins! Player's ${playerSelection.toLowerCase()} beats Computer's ${computerSelection.toLowerCase()}`;
-    let computerWinStr = `Computer wins! Computer's ${computerSelection.toLowerCase()} beats Player's ${playerSelection.toLowerCase()}`;
-    let TieStr = `It's a tie with both drawing ${playerSelection.toLowerCase()}`;
+    const playerChoice = document.querySelector('#player-choice');
+    const computerChoice = document.querySelector('#computer-choice');
 
-    console.log(`Player chose ${playerSelection.toLowerCase()}`);
-    console.log(`Computer chose ${computerSelection.toLowerCase()}`);
-
-    switch (playerSelection.toLowerCase()) {
-        case "rock": {
-            return (computerSelection === "scissors" ? playerWinStr : 
-            computerSelection === "paper" ? computerWinStr :
-            TieStr);
-        }
-        case "paper": {
-            return (computerSelection === "rock" ? playerWinStr : 
-            computerSelection === "scissors" ? computerWinStr :
-            TieStr);
-        }
-        case "scissors": {
-            return (computerSelection === "paper" ? playerWinStr : 
-            computerSelection === "rock" ? computerWinStr :
-            TieStr);
-        }
-    }
+    playerChoice.textContent = playerSelection.toUpperCase();
+    computerChoice.textContent = computerSelection.toUpperCase();
 }
 
