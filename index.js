@@ -25,6 +25,30 @@ function toggleGameState(elementToggleID, targetGameState) {
             currentGameState = 'game';
             playerRockPaperScissorsButtons = document.querySelectorAll('button');
             break;
+        case 'player win':
+            const playerWinAnnouncement = document.createElement('h1');
+
+            playerWinAnnouncement.textContent = 'PLAYER WINS!';
+            playerWinAnnouncement.classList.add('winner-announcement')
+
+            elementToggle.parentNode.insertBefore(playerWinAnnouncement, elementToggle.parentNode.firstChild);
+            break;
+        case 'computer win':
+            const computerWinAnnouncement = document.createElement('h1');
+
+            computerWinAnnouncement.textContent = 'COMPUTER WINS!';
+            playerWinAnnouncement.classList.add('winner-announcement')
+
+            elementToggle.parentNode.insertBefore(computerWinAnnouncement, elementToggle.parentNode.firstChild);
+            break;
+        case 'tie':
+            const tieWinAnnouncement = document.createElement('h1');
+
+            tieWinAnnouncement.textContent = 'IT\'S A TIE!';
+            playerWinAnnouncement.classList.add('winner-announcement')
+
+            elementToggle.parentNode.insertBefore(tieWinAnnouncement, elementToggle.parentNode.firstChild);
+            break;
     }
 
     playerRockPaperScissorsButtons.forEach((button) => {
@@ -120,6 +144,8 @@ function playRockPaperScissors(playerSelection, computerSelection) {
         } else {
             toggleGameState(gameStateID, 'tie');
         }
+
+        toggleGameState(gameStateID, 'restart');
     }
 }
 

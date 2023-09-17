@@ -77,3 +77,12 @@ button:hover {
 img {
     max-width: 300px;
 }
+
+.rock-paper-scissors.container .winner-announcement {
+    margin: 1rem;
+    padding: 1.5rem;
+    font-size: 5rem;
+    background-color: black;
+    color: white;
+    text-align: center;
+}
