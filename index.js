@@ -75,10 +75,51 @@ function getComputerChoice() {
 }
 
 function playRockPaperScissors(playerSelection, computerSelection) {
-    const playerChoice = document.querySelector('#player-choice');
-    const computerChoice = document.querySelector('#computer-choice');
+    const playerChoice = document.getElementById('player-choice');
+    const computerChoice = document.getElementById('computer-choice');
+    const playerScore = document.getElementById('player-score');
+    const computerScore = document.getElementById('computer-score');
+    const addOnePoint = (targetElement) => {
+        targetElement.textContent = targetElement.textContent.slice(0, -1) + (+targetElement.textContent.slice(-1) + 1);
+    }
+    const playerResult = () => {
+        switch (playerSelection) {
+            case 'rock':
+                return computerSelection === 'scissors' ? 'won'
+                : computerSelection === 'paper' ? 'lose'
+                : 'tie';
+            case 'paper':
+                return computerSelection === 'rock' ? 'won'
+                : computerSelection === 'scissors' ? 'lose'
+                : 'tie';
+            case 'scissors':
+                return computerSelection === 'paper' ? 'won'
+                : computerSelection === 'rock' ? 'lose'
+                : 'tie';
+        }
+    }
 
     playerChoice.textContent = playerSelection.toUpperCase();
     computerChoice.textContent = computerSelection.toUpperCase();
+
+    if (playerResult() === 'won') {
+        addOnePoint(playerScore);
+    } else if (playerResult() === 'lose') {
+        addOnePoint(computerScore);
+    } else {
+        addOnePoint(playerScore);
+        addOnePoint(computerScore);
+    }
+
+    if (playerScore.textContent.slice(-1) == '5' 
+    || computerScore.textContent.slice(-1) == '5') {
+        if (playerScore.textContent.slice(-1) > computerScore.textContent.slice(-1)) {
+            toggleGameState(gameStateID, 'player win');
+        } else if (playerScore.textContent.slice(-1) < computerScore.textContent.slice(-1)) {
+            toggleGameState(gameStateID, 'computer win');
+        } else {
+            toggleGameState(gameStateID, 'tie');
+        }
+    }
 }
 
