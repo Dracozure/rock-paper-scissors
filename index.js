@@ -93,9 +93,6 @@ function getComputerChoice() {
 }
 
 function playRockPaperScissors(playerSelection, computerSelection) {
-
-    console.log("PLAYGAME");
-
     const playerChoice = document.getElementById('player-choice');
     const computerChoice = document.getElementById('computer-choice');
     const playerScore = document.getElementById('player-score');
